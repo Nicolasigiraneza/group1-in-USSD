@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance by Date</title>
+</head>
+<body>
+    <h1>Check Attendance by Date</h1>
+    <form method="POST">
+        <input type="date" name="date" required>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if records is not none %}
+        <h2>Attendance for {{ selected_date }}</h2>
+        {% if records %}
+            <ul>
+            {% for record in records %}
+                <li>{{ record.name }} - {{ record.date }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No attendance recorded for this date.</p>
+        {% endif %}
+    {% endif %}
+    <a href="/today">Back to Today's Attendance</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Today's Attendance</title>
+</head>
+<body>
+    <h1>Attendance for {{ today }}</h1>
+    {% if records %}
+        <ul>
+        {% for record in records %}
+            <li>{{ record.name }} - {{ record.date }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No attendance recorded today.</p>
+    {% endif %}
+    <a href="/bydate">View Attendance by Date</a>
+</body>
+</html>

@@ -5,10 +5,10 @@ import mysql.connector
 app = Flask(__name__)
 
 # MySQL configuration
-MYSQL_HOST = 'localhost'  # or your MySQL server address
+MYSQL_HOST = 'ballast.proxy.rlwy.net'  # or your MySQL server address
 MYSQL_USER = 'root'       # your MySQL username
-MYSQL_PASSWORD = ''  # your MySQL password
-MYSQL_DATABASE = 'attendance_system'  # your MySQL database name
+MYSQL_PASSWORD = 'AiejrHXMLMFtHmeLNfTwoDDkEGFMUqRd'  # your MySQL password
+MYSQL_DATABASE = 'railway'  # your MySQL database name
 
 # Helper to get student ID by phone number
 def get_student_id_by_phone(phone):

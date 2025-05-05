@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: ussd-attendance-app
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python ussd_app.py
-    plan: free

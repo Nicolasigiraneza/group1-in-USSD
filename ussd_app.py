@@ -1,15 +1,14 @@
 from flask import Flask, request, Response
 from datetime import datetime
 import mysql.connector
-import os
 
 app = Flask(__name__)
 
 # MySQL configuration
-MYSQL_HOST = os.environ.get("MYSQL_HOST")  # Get from environment variables
-MYSQL_USER = os.environ.get("MYSQL_USER")  # Get from environment variables
-MYSQL_PASSWORD = os.environ.get("MYSQL_PASSWORD")  # Get from environment variables
-MYSQL_DATABASE = os.environ.get("MYSQL_DATABASE")  # Get from environment variables
+MYSQL_HOST = 'localhost'  # or your MySQL server address
+MYSQL_USER = 'root'       # your MySQL username
+MYSQL_PASSWORD = ''  # your MySQL password
+MYSQL_DATABASE = 'attendance_system'  # your MySQL database name
 
 # Helper to get student ID by phone number
 def get_student_id_by_phone(phone):
@@ -66,7 +65,7 @@ def get_attendance_by_date(date):
         database=MYSQL_DATABASE
     )
     c = conn.cursor()
-    c.execute(''' 
+    c.execute('''
         SELECT s.name, s.phone_number FROM attendance a
         JOIN students s ON a.student_id = s.id
         WHERE a.date = %s
@@ -179,5 +178,4 @@ def admin_ussd():
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(port=5000)
